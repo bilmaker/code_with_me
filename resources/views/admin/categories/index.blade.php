@@ -17,10 +17,10 @@
                         Category name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Slug
+                        Image
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        image
+                        Updated At
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -31,14 +31,14 @@
                 @foreach ($categories as $category)
                 <tr
                     class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $category->name }}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ $category->slug }}
                     </td>
                     <td class="px-6 py-4">
                         <img class="h-10 w-10 rounded-md" src="{{ Storage::url($category->image) }}"> </img>
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $category->updated_at }}
                     </td>
                     <td class="px-6 py-4">
 

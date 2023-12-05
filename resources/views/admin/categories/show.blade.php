@@ -1,16 +1,20 @@
 <x-app-layout>
+<div class="flex justify-end">
+        <a href="{{ route('subcategories.create') }}"
+            class="py-2 px-4 m-2 bg-green-500 hover:bg-green-300 text-black-50">Add SubCategory</a>
+    </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Category name
+                        SubCategory name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Slug
+                        Image
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        image
+                        Updated At
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -25,10 +29,10 @@
                     {{ $subcategory->name }}
                     </th>
                     <td class="px-6 py-4">
-                    {{ $subcategory->slug }}
+                        <img class="h-10 w-10 rounded-md" src="{{ Storage::url( $subcategory->image) }}"> </img>
                     </td>
                     <td class="px-6 py-4">
-                        <img class="h-10 w-10 rounded-md" src="{{ Storage::url( $subcategory->image) }}"> </img>
+                    {{ $subcategory->updated_at }}
                     </td>
                     <td class="px-6 py-4">
                         <br><br>
