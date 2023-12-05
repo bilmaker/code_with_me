@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
+
 class CategoryController extends Controller
 {
     /**
@@ -15,8 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(12);
-        return view('admin.categories.index', compact('categories'));
+        $categories = Category::with('subcategories')->get();
+
+        return view('admin.categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -42,18 +44,20 @@ class CategoryController extends Controller
 
             ]);
 
-            return redirect()->route('categories.index')->with('message','Category Created');
+            return redirect()->route('categories.index')->with('message', 'Category Created');
         }
 
-        return redirect()->route('categories.index')->with('message','Category Created');
+        return redirect()->route('categories.index')->with('message', 'Category Created');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $category = Category::resolveRouteBinding($id);
+
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -77,7 +81,7 @@ class CategoryController extends Controller
                 'image' => $path
 
             ]);
-            return redirect()->route('categories.index')->with('message','Category Updated with image!');
+            return redirect()->route('categories.index')->with('message', 'Category Updated with image!');
 
         } else {
 
@@ -86,7 +90,7 @@ class CategoryController extends Controller
                 'slug' => Str::slug($request->name),
             ]);
         }
-        return redirect()->route('categories.index')->with('message','Category Updated!');
+        return redirect()->route('categories.index')->with('message', 'Category Updated!');
     }
 
     /**
@@ -96,7 +100,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('categories.index')->with('message','Category Deleted');
+        return redirect()->route('categories.index')->with('message', 'Category Deleted');
     }
 
     public function viewSubcategories(Request $request)

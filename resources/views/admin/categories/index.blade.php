@@ -41,16 +41,13 @@
                         <img class="h-10 w-10 rounded-md" src="{{ Storage::url($category->image) }}"> </img>
                     </td>
                     <td class="px-6 py-4">
-                        
-                        <form method="GET" action="{{ route('categories.viewSubcategories', $category->id) }}">
-                            <a class="text-white-500 hover:text-black-900 px-2"
-                                href="{{ route('categories.viewSubcategories', $category->id) }}" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                View
-                            </a>
-                           
-                        </form>
-                        
+
+
+                        <a class="text-white-500 hover:text-black-900 px-2"
+                            href="{{ route('categories.show', $category) }}">View</a>
+
+
+
                         <br><br>
                         <a href="{{ route('categories.edit', $category->id) }}"
                             class="p-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>

@@ -33,6 +33,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('categories', CategoryController::class);
 Route::resource('subcategories', SubCategoryController::class);
+Route::get('/categories/{id}', 'CategoryController@show');
+
 Route::get('/categories/{subcategory}', [CategoryController::class, 'viewSubcategories'])->name('categories.viewSubcategories');
 
 
