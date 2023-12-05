@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
@@ -53,13 +55,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        $category = Category::resolveRouteBinding($id);
-
-        return view('category.show', compact('category'));
+        return view('admin.categories.show', compact('category'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
