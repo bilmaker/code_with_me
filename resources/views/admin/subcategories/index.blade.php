@@ -16,10 +16,10 @@
                         SubCategory name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Slug
+                        Image
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Image
+                        Updated At
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -33,10 +33,10 @@
                         {{ $sub_category->name }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $sub_category->slug }}
+                        <img class="h-10 w-10 rounded-md" src="{{ Storage::url($sub_category->image) }}" alt="Subcategory Image">
                     </td>
                     <td class="px-6 py-4">
-                        <img class="h-10 w-10 rounded-md" src="{{ Storage::url($sub_category->image) }}" alt="Subcategory Image">
+                        {{ $sub_category->updated_at }}
                     </td>
                     <td class="px-6 py-4">
                         <a href="{{ route('subcategories.edit', $sub_category->id) }}" class="p-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
